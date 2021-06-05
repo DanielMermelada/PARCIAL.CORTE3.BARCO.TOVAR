@@ -28,7 +28,7 @@ public class BasicScene extends Application {
 
     //Propiedades Visuales - Las propiedades utilizadas como botones, declaradas para aparecer en la interfaz
     private Scene scene;
-    private TableView<Persona> personasTable;
+    public TableView<Persona> personasTable;
     private TextField nameInput;
     private TextField lastnameInput;
     private TextField ageInput;
@@ -39,13 +39,14 @@ public class BasicScene extends Application {
     private Button editPersona;
     private Button deletePersona;
     private Button openReport;
+    public List<Persona> personaTableList;
 
     //Para el menú - Derivada de las propiedades para el menu desplegable
     private MenuBar menuBar;
     private Map<String, MenuItem> fileMenuItems;
 
     //Propiedades Lógicas - Son las propiedades que proveen servicios como añadir, eliminar, etc...
-    private IPersonaServices personaServices;
+    public IPersonaServices personaServices;
 
     //CRUD - Se crea un CRUD para la interfaz gráfica
     @Override
@@ -131,6 +132,7 @@ public class BasicScene extends Application {
                 }
             }
         });
+
 
         openReport.setOnAction(e -> {
             new ReportScene();
@@ -286,6 +288,7 @@ public class BasicScene extends Application {
         menuBar = new MenuBar();
         menuBar.getMenus().add(fileMenu);
     }
+    public TableView<Persona> getTable(){return this.personasTable;}
 
     public static void main(String[] args) {
         launch(args);
